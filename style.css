@@ -38,6 +38,11 @@ a{
 img{
     width: 45px;
     height: auto;
+    transition: width 1s, height 1s;
+}
+img:hover{
+    width:90px;
+    height:auto;
 }
 
 .header{
@@ -69,6 +74,7 @@ strong{
     height: auto;
     margin:  0 auto;
 }
+
 .non-intro{
     display:flex;
 }
@@ -80,6 +86,6 @@ strong{
     transition: font-size .4s;
 }
 .information > a:hover{
-        font-size:20px;
+        font-size:60px;
         color:#DA2528;
 }
