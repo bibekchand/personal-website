@@ -35,7 +35,7 @@
                 background-color: #961EE1;
                 padding:20px;
                 border:2px solid #6AE11E;
-                width: 304px;
+                width: 400px;
                 border-radius:20px;
                 transition: border-radius .3s;
             }
@@ -61,10 +61,9 @@
             </ul>
         </div>
         <div class = "secondContainer">
-            Completed tasks✅  <button id = "secondbutton">Delete All</button>
+            Completed tasks✅ <button id = "secondbutton">Delete All</button>
             <ul>
             </ul>
-          
         </div>
         <script>
             const menu = document.querySelector("ul");
@@ -90,8 +89,7 @@
         });
         const delall = document.querySelector("#secondbutton");
         delall.addEventListener("click",
-            ()=>{ container.removeChild(secondContainer);
-
+            ()=>{ secondContainer.textContent = '';
             }
         );
         input.addEventListener("keyup", function(e){
