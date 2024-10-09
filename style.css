@@ -1,8 +1,8 @@
 body{
     box-sizing:border-box;
     font-family:'EB Garamond', sans-serif;
+    background-color: #25DAD7;
     font-style:italic;
-    background-color:#25DAD7;
     padding: 0 100px;
 }
 ul{
@@ -31,6 +31,9 @@ li:hover{
 }
 #thirdnav{
     background-color: #82DA25;
+}
+#fourthnav{
+    background-color: #DA2528;
 }
 a{
     text-decoration:none;
