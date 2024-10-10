@@ -11,18 +11,26 @@
       href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap"
       rel="stylesheet"
     />
-    <link rel="icon" type="image/x-icon" href="penguin.png">
-
+    <link rel="icon" type="image/x-icon" href="penguin.png" />
   </head>
   <body>
     <div class="header">
       <img src="anime logo.png" alt="this is my logo" />
       <div class="header-navbar">
         <ul>
-          <li id="firstnav"><a target="_blank" href="https://github.com/bibekchand">Github</a></li>
-          <li id="secondnav"><a target="_blank" href="https://www.linkedin.com/in/bibek-chand-7b4112234/">LinkedIn</a></li>
-          <li id="thirdnav"><a target="_blank" href="https://x.com/bibekchand843">Twitter</a></li>
-          <li id="fourthnav"><a target="_blank" href="./cllick.html">Task</a></li>
+          <li id="firstnav">
+            <a target="_blank" href="https://github.com/bibekchand">Github</a>
+          </li>
+          <li id="secondnav">
+            <a
+              target="_blank"
+              href="https://www.linkedin.com/in/bibek-chand-7b4112234/"
+              >LinkedIn</a
+            >
+          </li>
+          <li id="thirdnav">
+            <a target="_blank" href="https://x.com/bibekchand843">Twitter</a>
+          </li>
         </ul>
       </div>
     </div>
@@ -32,13 +40,36 @@
       <div class="non-intro">
         <div class="information">
           I am a
-          <a target="_blank" href="https://www.linkedin.com/in/bibek-chand-7b4112234/"
+          <a
+            target="_blank"
+            href="https://www.linkedin.com/in/bibek-chand-7b4112234/"
             >student</a
           >, enrolled in Electronics, Communication and Information Engineering.
         </div>
-        <div class = "img"></div>
-        <img src="computer.png" alt="circuit image" id = "mainimage">
+        <div class="img"></div>
+        <img src="computer.png" alt="circuit image" id="mainimage" />
       </div>
     </div>
+
+    <div class="projects">
+      <div class="text"><h1>My Projects</h1></div>
+      <div class="projectbox">
+        <div id="firstproject">
+          <a href="./cllick.html"
+            ><img src="computer.png" alt="" />
+            <p>
+              This is a simple to do list. Just created for fun. Have fun!
+            </p></a
+          >
+        </div>
+        <div id="secondproject"><img src="" alt="" /></div>
+      </div>
+    </div>
+    <script>
+      const nav = document.querySelector(".header");
+      document.addEventListener("scroll", () => {
+        nav.style.opacity = window.scrollY !== 0 ? 0.6 : 1;
+      });
+    </script>
   </body>
 </html>
