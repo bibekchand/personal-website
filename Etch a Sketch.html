@@ -14,17 +14,26 @@
         background-color: aquamarine;
         font-family: "EB Garamond";
         font-style: italic;
+        box-sizing:border-box;
       }
       .container {
         display: flex;
         justify-content: center;
         margin: 0 auto;
+        height:500px;
+        width: 500px;
+        border: 5px solid greenyellow;
       }
-      .container .rows div {
-        width: 20px;
-        height: 20px;
-        /* border: 2px solid red; */
+      .rows{
+        display:flex;
+        flex-direction:column;
+        flex:1;
+      }
+      .container .rows div{
+        border: 2px solid red;
         background-color: yellow;
+        height:20px;
+        flex:1;
       }
       .buttons {
         margin-bottom: 20px;
