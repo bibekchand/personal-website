@@ -1,101 +1,98 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset = "UTF-8">
-        <title>Personal ToDo List</title>
-        <style>
-            body{
-                display:flex;
-                justify-content: center;
-                background-color: #1ECBE1;
-                font-family:"EB Garamond";
-                font-style:italic;
-            }
-            button{
-                margin-left:5px;
-            }
-            li{
-                margin-bottom:5px;
-            }
-            .container{
-                background-color: #E1341E;
-                padding:20px;
-                border:2px solid #6AE11E;
-                border-radius:20px;
-                transition: border-radius .3s;
-            }
-            .container:hover{
-                border-radius:0px;
-            }
-            button{
-                background-color: #1ECBE1;
-                border-radius:10px;
-            }
-            .secondContainer{
-                background-color: #961EE1;
-                padding:20px;
-                border:2px solid #6AE11E;
-                width: 400px;
-                border-radius:20px;
-                transition: border-radius .3s;
-            }
-            .secondContainer:hover{
-                border-radius:0px;
-                font-size:30px;
-                width:500px;
-            }
-        </style>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-          href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap"
-          rel="stylesheet"
-        />
-    </head>
-    <body>
-        <div class="container"><h1>Personal To do List</h1>
-            <label for="item">Enter the message: </label><br>
-            <input type = "text" name = "item" id = "item">
-            <button id = "btn">Add Item</button>
-            <ul>
-            </ul>
-        </div>
-        <div class = "secondContainer">
-            Completed tasks✅ <button id = "secondbutton">Delete All</button>
-            <ul>
-            </ul>
-        </div>
-        <script>
-            const menu = document.querySelector("ul");
-            const input = document.querySelector("#item");
-            const btn = document.querySelector("#btn");
-            const secondContainer = document.querySelector(".secondContainer>ul");
-            const container = document.querySelector(".secondContainer");
-            btn.addEventListener("click", function(e)
-        {
-            const message = input.value;
-            input.value = '';
-            const li = document.createElement("li");
-            li.textContent = message;
-            menu.appendChild(li);
-            const delbutton = document.createElement("button");
-            delbutton.textContent = "Completed ✅";
-            li.appendChild(delbutton);
-            delbutton.addEventListener("click", function(e){
-                menu.removeChild(li);
-                li.removeChild(delbutton);
-                secondContainer.appendChild(li);
-            });
+  <head>
+    <meta charset="UTF-8" />
+    <title>Personal ToDo List</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        background-color: #1ecbe1;
+        font-family: "EB Garamond";
+        font-style: italic;
+      }
+      button {
+        margin-left: 5px;
+      }
+      li {
+        margin-bottom: 5px;
+      }
+      .container {
+        background-color: #e1341e;
+        padding: 20px;
+        border: 2px solid #6ae11e;
+        border-radius: 20px;
+        transition: border-radius 0.3s;
+      }
+      .container:hover {
+        border-radius: 0px;
+      }
+      button {
+        background-color: #1ecbe1;
+        border-radius: 10px;
+      }
+      .secondContainer {
+        background-color: #961ee1;
+        padding: 20px;
+        border: 2px solid #6ae11e;
+        width: 400px;
+        border-radius: 20px;
+        transition: border-radius 0.3s;
+      }
+      .secondContainer:hover {
+        border-radius: 0px;
+        font-size: 30px;
+        width: 500px;
+      }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/x-icon" href="penguin.png?v=2" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Personal To do List</h1>
+      <label for="item">Enter the message: </label><br />
+      <input type="text" name="item" id="item" />
+      <button id="btn">Add Item</button>
+      <ul></ul>
+    </div>
+    <div class="secondContainer">
+      Completed tasks✅ <button id="secondbutton">Delete All</button>
+      <ul></ul>
+    </div>
+    <script>
+      const menu = document.querySelector("ul");
+      const input = document.querySelector("#item");
+      const btn = document.querySelector("#btn");
+      const secondContainer = document.querySelector(".secondContainer>ul");
+      const container = document.querySelector(".secondContainer");
+      btn.addEventListener("click", function (e) {
+        const message = input.value;
+        input.value = "";
+        const li = document.createElement("li");
+        li.textContent = message;
+        menu.appendChild(li);
+        const delbutton = document.createElement("button");
+        delbutton.textContent = "Completed ✅";
+        li.appendChild(delbutton);
+        delbutton.addEventListener("click", function (e) {
+          menu.removeChild(li);
+          li.removeChild(delbutton);
+          secondContainer.appendChild(li);
         });
-        const delall = document.querySelector("#secondbutton");
-        delall.addEventListener("click",
-            ()=>{ secondContainer.textContent = '';
-            }
-        );
-        input.addEventListener("keyup", function(e){
-            if (e.key==='Enter')  btn.click();
-        });
-        </script>
-
-    </body>
+      });
+      const delall = document.querySelector("#secondbutton");
+      delall.addEventListener("click", () => {
+        secondContainer.textContent = "";
+      });
+      input.addEventListener("keyup", function (e) {
+        if (e.key === "Enter") btn.click();
+      });
+    </script>
+  </body>
 </html>

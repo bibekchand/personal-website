@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Etch a sketch</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background-color: aquamarine;
+        font-family: "EB Garamond";
+        font-style: italic;
+      }
+      .container {
+        display: flex;
+        justify-content: center;
+        margin: 0 auto;
+      }
+      .container .rows div {
+        width: 20px;
+        height: 20px;
+        /* border: 2px solid red; */
+        background-color: yellow;
+      }
+      .buttons {
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: space-around;
+      }
+      button {
+        padding: 0 20px;
+        border-radius: 6px;
+        background-color: aqua;
+        border-color: white;
+      }
+    </style>
+    <link rel="icon" type="image/x-icon" href="penguin.png?v=2" />
+  </head>
+  <body>
+    <div class="buttons">
+      <div class="in">
+        <button id="addButton">Add</button>
+        <label for="text">Grids: </label>
+        <input
+          type="number"
+          id="text"
+          style="width: 100px; border: 2px solid red; border-radius: 8px"
+        />
+      </div>
+      <h1 style="margin: 0px">Click to play</h1>
+      <button id="refButton">Refresh</button>
+    </div>
+    <div class="container"></div>
+    <script>
+      const container = document.querySelector(".container");
+      const columns = document.createElement("div");
+      columns.setAttribute("class", "columns");
+      const rows = document.createElement("div");
+      rows.setAttribute("class", "rows");
+      const input = document.querySelector("#text");
+      const button = document.querySelector("#addButton");
+      input.addEventListener("keypress", (e) => {
+        if (e.key == "Enter") button.click();
+      });
+      button.addEventListener("click", function (event) {
+        let number = input.value;
+        if (number > 100) {
+          alert("Don't enter more than 100");
+          number = 100;
+        }
+        container.textContent = "";
+        for (i = 0; i < number; i++) {
+          const rows = document.createElement("div");
+          rows.setAttribute("class", "rows");
+          container.appendChild(rows);
+          for (j = 0; j < number; j++) {
+            const columns = document.createElement("div");
+            columns.setAttribute("class", "columns");
+            rows.appendChild(columns);
+          }
+        }
+        const refButton = document.querySelector("#refButton");
+        refButton.addEventListener("click", () => {
+          const cols = document.querySelectorAll(".columns");
+          cols.forEach((item) => (item.style.backgroundColor = "yellow"));
+        });
+      });
+
+      container.addEventListener("mouseover", (e) => {
+        let i = Math.random() * 255;
+        let j = Math.random() * 255;
+        let k = Math.random() * 255;
+        if (e.target.classList.contains("columns") && e.buttons == 1) {
+          e.target.style.cssText = `background-color: rgb(${i}, ${j} ,${k});`;
+        }
+      });
+    </script>
+  </body>
+</html>
