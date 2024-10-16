@@ -1,0 +1,77 @@
+body{
+    box-sizing:border-box;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+    font-family:"Space Grotesk", "sans-serif";
+}
+.container{
+    display:flex;
+    flex-direction:column;
+    width:400px;
+    height: 580px;
+    border:2px solid#EAFF7F;
+    padding:30px;
+    margin: 0 auto;
+    gap: 30px;
+    border-radius:9px;
+    background-color: rgb(127, 116, 127);
+}
+.display{
+    display:flex;
+    justify-content: end;
+    align-items:end;
+    font-size:40px;
+    height: 100px;
+    border:2px solid#EAFF7F;
+    background-color:#7fffd4;
+    border-radius:9px;
+}
+.symbols{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    flex:1;
+}
+.row{
+    display:flex;
+    gap:20px;
+    flex:1;
+}
+.number{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width:50px;
+    font-size:40px;
+    height: auto;
+    border:2px solid black;
+    flex:auto;
+    background-color:#7fffd4;
+    padding-top:10px;
+    padding-bottom:10px;
+    border-radius:50px;
+    box-shadow: 3px 3px lightblue;
+}
+.number:hover{
+    background-color: #68cdab;
+}
+#clear{
+    background-color: rgb(196, 18, 18);
+}
+.number.operator{
+    background-color:goldenrod;
+}
+.number.operator:hover{
+    background-color: rgb(187, 156, 69);
+}
+#clear:hover{
+    background-color: rgb(185, 93, 93);
+}
+.copyright{
+    height: 30px;
+    display:flex;
+    justify-content: center;
+    font-size:20px;
+    align-items: center;
+}

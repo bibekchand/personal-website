@@ -1,0 +1,143 @@
+function add(a, b) {
+  return a + b;
+}
+function subtract(a, b) {
+  return a - b;
+}
+function multiply(a, b) {
+  return a * b;
+}
+function divide(a, b) {
+  return a / b;
+}
+
+let firstNumber = 0;
+let secondNumber = 0;
+let operator = "";
+let firstNumberDecimal = false;
+let secondNumberDecimal = false;
+
+function operate(a, b, operator) {
+  switch (operator) {
+    case "+":
+      return add(a, b);
+      break;
+    case "-":
+      return subtract(a, b);
+      break;
+    case "*":
+      return multiply(a, b);
+      break;
+    case "÷":
+      return divide(a, b);
+      break;
+  }
+}
+
+let count = false; //set states for inputs false for first state: get num and then get opreator second for second number
+//DOM manipulate
+const display = document.querySelector(".display");
+const symbols = document.querySelector(".symbols");
+symbols.addEventListener("click", function (event) {
+  let target = event.target;
+  if (
+    target.getAttribute("class") == "number" ||
+    target.getAttribute("class") == "number operator"
+  ) {
+    let displayValue = target.innerText; //get the symbol clicked
+    if (target.getAttribute("id") == "Backspace") { 
+      let num = display.innerText; 
+      num = num.toString(); //convert to string so it can be sliced
+
+      num = num.slice(0, num.length - 1); //remove the last one
+      if (count == false) {
+        if (firstNumberDecimal) firstNumber = parseFloat(num); //convert it again to float if decimal activated 
+        else firstNumber = parseInt(num); //else convert to int
+        display.innerText = firstNumber; //display the converted number
+        return;
+      }
+      
+      else {
+        if (secondNumberDecimal) secondNumber = parseFloat(num); //same for number after the operation
+        else secondNumber = parseInt(num);
+        display.innerText = secondNumber;
+        return;
+      }
+    }
+    if (displayValue == "AC") { //if AC reset all
+      display.innerText = ""; 
+      count = false;
+      firstNumber = secondNumber = 0;
+      operator = "";
+      firstNumberDecimal = secondNumberDecimal = false;
+      return;
+    }
+    if (displayValue == "=") {
+      let result = operate(firstNumber, secondNumber, operator);
+      secondNumber = 0; //reset the second number so that the next operation can be done immediately  
+      display.innerText = result;
+      count = false; //start to ask for operator
+      firstNumber = result; //put the first number 
+      secondNumberDecimal = false; //reset the decimals of second number but not of first
+      return;   
+    }
+    //condition for decimal
+    if (displayValue == ".") {
+      if (count == false && !firstNumberDecimal) {
+        firstNumber = firstNumber + "."; //appends a decimal and convertes to string
+        firstNumberDecimal = true;
+        display.innerText = firstNumber;
+        return;
+      }
+      if (count == true && !secondNumberDecimal) {
+        secondNumber = secondNumber + ".";
+        secondNumberDecimal = true;
+        display.innerText = secondNumber;
+        return;
+      }
+    }
+    if (count == false) {
+      if (!isNaN(displayValue)) {
+        if (firstNumberDecimal) { //if decimal then string so parsefloat and get the string to number format
+          firstNumber = parseFloat(firstNumber + displayValue);
+        } else {
+          firstNumber = firstNumber * 10 + +displayValue; 
+        }
+        display.innerText = firstNumber;
+      } else { //get the operator
+        operator = displayValue;
+        display.innerText = displayValue;
+        count = true;
+        return;
+      }
+    }
+    if (count == true) {
+      if (!isNaN(displayValue)) {
+        if(secondNumberDecimal){
+            secondNumber = parseFloat(secondNumber + displayValue);
+        }
+        else
+        secondNumber = secondNumber * 10 + +displayValue;
+        display.innerText = secondNumber;
+      }
+    }
+  }
+});
+const body = document.querySelector("body");
+body.addEventListener("keydown", function(event){
+        let key = event.key;
+        console.log(key);
+        let ele = document.getElementById(key);
+        console.log(ele);
+        ele.click();
+        
+});
+
+//styling on press
+symbols.addEventListener("mousedown", function (event) {
+  event.target.style.cssText =
+    "border-color:rgb(127, 116, 124); font-size:30px; box-shadow:0px 0px;";
+});
+symbols.addEventListener("mouseup", function (event) {
+  event.target.style.cssText = "border-color:black;";
+});

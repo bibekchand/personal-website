@@ -17,6 +17,7 @@ li {
   font-size: 30px;
   padding: 3px;
   transition: font-size 0.3s, border-radius 0.7s;
+  box-shadow: 4px 4px rgb(82, 69, 69);
 }
 li:hover {
   font-size: 38px;
