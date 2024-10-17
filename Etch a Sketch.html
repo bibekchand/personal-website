@@ -110,7 +110,7 @@
         const refButton = document.querySelector("#refButton");
         refButton.addEventListener("click", () => {
           const cols = document.querySelectorAll(".columns");
-          cols.forEach((item) => (item.style.backgroundColor = "whitesmoke"));
+          cols.forEach((item) => (item.style.backgroundColor = "white"));
         });
       });
       const singleColor = document.querySelector("#singleColor");
@@ -126,7 +126,6 @@
         });
       });
       singleColor.addEventListener("click", () => {
-        
         container.addEventListener("mouseover", (e) => {
           if (e.target.classList.contains("columns") && e.buttons == 1) {
             e.target.style.cssText = `background-color: black`;
