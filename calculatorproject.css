@@ -10,7 +10,7 @@ body{
     flex-direction:column;
     width:400px;
     height: 580px;
-    border:2px solid#EAFF7F;
+    border:2px solid rgb(0, 0, 0);
     padding:30px;
     margin: 0 auto;
     gap: 30px;
@@ -23,7 +23,7 @@ body{
     align-items:end;
     font-size:40px;
     height: 100px;
-    border:2px solid#EAFF7F;
+    border:2px solid rgb(54, 49, 49);
     background-color:#7fffd4;
     border-radius:9px;
 }
