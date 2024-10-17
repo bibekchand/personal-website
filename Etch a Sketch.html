@@ -11,57 +11,75 @@
     />
     <style>
       body {
-        background-color: aquamarine;
+        margin-top: 50px;
+        background-color: rgb(221, 249, 239);
         font-family: "EB Garamond";
         font-style: italic;
-        box-sizing:border-box;
+        box-sizing: border-box;
+        display: flex;
+        height: 500px;
+        width: 1000px;
+        margin-left: 100px;
+        justify-content: center;
+        gap: 50px;
       }
       .container {
         display: flex;
         justify-content: center;
-        margin: 0 auto;
-        height:500px;
         width: 500px;
-        border: 5px solid greenyellow;
+        height: 500px;
+        border: 4px solid rgb(186, 163, 163);
       }
-      .rows{
-        display:flex;
-        flex-direction:column;
-        flex:1;
+      .rows {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
       }
-      .container .rows div{
-        border: 2px solid red;
-        background-color: yellow;
-        height:20px;
-        flex:1;
+      .container .rows div {
+        background-color: white;
+        height: 20px;
+        flex: 1;
+        border: 0.5px solid whitesmoke;
       }
       .buttons {
-        margin-bottom: 20px;
         display: flex;
+        flex-direction: column;
         justify-content: space-around;
       }
       button {
         padding: 0 20px;
-        border-radius: 6px;
-        background-color: aqua;
+        border-radius: 10px;
+        background-color: rgb(217, 205, 205);
+        width: 200px;
+        height: 50px;
+        flex: 0 1 auto;
         border-color: white;
       }
     </style>
     <link rel="icon" type="image/x-icon" href="penguin.png?v=2" />
   </head>
   <body>
+    <h1>Project Etch-a-Sketch</h1>
     <div class="buttons">
-      <div class="in">
-        <button id="addButton">Add</button>
-        <label for="text">Grids: </label>
+      <button id="singleColor">Monochromatic</button>
+      <button id="rainbow">Rainbow Mode</button>
+      <button id="refButton">Clear</button>
+      <div class="slider">
         <input
-          type="number"
-          id="text"
-          style="width: 100px; border: 2px solid red; border-radius: 8px"
+          type="range"
+          min="1"
+          max="100"
+          value="0"
+          class="slider"
+          id="myRange"
         />
+        <label
+          for="myRange"
+          id="range"
+          style="font-size: 20px; margin: 0px; padding: 0px"
+          >0</label
+        >
       </div>
-      <h1 style="margin: 0px">Click to play</h1>
-      <button id="refButton">Refresh</button>
     </div>
     <div class="container"></div>
     <script>
@@ -70,17 +88,13 @@
       columns.setAttribute("class", "columns");
       const rows = document.createElement("div");
       rows.setAttribute("class", "rows");
-      const input = document.querySelector("#text");
+      const input = document.querySelector("#myRange");
       const button = document.querySelector("#addButton");
-      input.addEventListener("keypress", (e) => {
-        if (e.key == "Enter") button.click();
-      });
-      button.addEventListener("click", function (event) {
+      const amount = document.querySelector("#range");
+      //click event listener
+      input.addEventListener("input", function (event) {
         let number = input.value;
-        if (number > 100) {
-          alert("Don't enter more than 100");
-          number = 100;
-        }
+        amount.textContent = number;
         container.textContent = "";
         for (i = 0; i < number; i++) {
           const rows = document.createElement("div");
@@ -92,20 +106,31 @@
             rows.appendChild(columns);
           }
         }
+        //clear all button
         const refButton = document.querySelector("#refButton");
         refButton.addEventListener("click", () => {
           const cols = document.querySelectorAll(".columns");
-          cols.forEach((item) => (item.style.backgroundColor = "yellow"));
+          cols.forEach((item) => (item.style.backgroundColor = "white"));
         });
       });
-
-      container.addEventListener("mouseover", (e) => {
-        let i = Math.random() * 255;
-        let j = Math.random() * 255;
-        let k = Math.random() * 255;
-        if (e.target.classList.contains("columns") && e.buttons == 1) {
-          e.target.style.cssText = `background-color: rgb(${i}, ${j} ,${k});`;
-        }
+      const singleColor = document.querySelector("#singleColor");
+      const rainbow = document.querySelector("#rainbow");
+      rainbow.addEventListener("click", () => {
+        container.addEventListener("mouseover", (e) => {
+          let i = Math.random() * 255;
+          let j = Math.random() * 255;
+          let k = Math.random() * 255;
+          if (e.target.classList.contains("columns") && e.buttons == 1) {
+            e.target.style.cssText = `background-color: rgb(${i}, ${j} ,${k});`;
+          }
+        });
+      });
+      singleColor.addEventListener("click", () => {
+        container.addEventListener("mouseover", (e) => {
+          if (e.target.classList.contains("columns") && e.buttons == 1) {
+            e.target.style.cssText = `background-color: black`;
+          }
+        });
       });
     </script>
   </body>
